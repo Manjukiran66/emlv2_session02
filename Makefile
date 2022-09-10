@@ -17,7 +17,7 @@ build:
 	docker build --tag ${IMAGE_NAME}  .
 
 run:
-	docker run --volume `pwd`:/workspace/emlv2 ${IMAGE_NAME} bash /workspace/emlv2/entrypoint.sh
+	docker run -it --volume `pwd`:/workspace/emlv2 ${IMAGE_NAME} bash /workspace/emlv2/entrypoint.sh
 format: ## Run pre-commit hooks
 	pre-commit run -a
 

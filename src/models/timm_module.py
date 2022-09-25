@@ -77,7 +77,7 @@ class TIMMLitModule(LightningModule):
         self.val_acc(preds, targets)
         self.log("val/loss", self.val_loss, on_step=False, on_epoch=True, prog_bar=True)
         self.log("val/acc", self.val_acc, on_step=False, on_epoch=True, prog_bar=True)
-
+        self.log("hp_metric", loss)
         return {"loss": loss, "preds": preds, "targets": targets}
 
     def validation_epoch_end(self, outputs: List[Any]):
@@ -89,13 +89,11 @@ class TIMMLitModule(LightningModule):
 
     def test_step(self, batch: Any, batch_idx: int):
         loss, preds, targets = self.step(batch)
-
         # update and log metrics
         self.test_loss(loss)
         self.test_acc(preds, targets)
         self.log("test/loss", self.test_loss, on_step=False, on_epoch=True, prog_bar=True)
         self.log("test/acc", self.test_acc, on_step=False, on_epoch=True, prog_bar=True)
-
         return {"loss": loss, "preds": preds, "targets": targets}
 
     def test_epoch_end(self, outputs: List[Any]):

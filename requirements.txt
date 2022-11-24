@@ -12,7 +12,7 @@ hydra-colorlog==1.2.0
 hydra-optuna-sweeper==1.2.0
 
 #----------timm---------------#
-timm==0.6.7
+timm==0.6.12
 
 # --------- loggers --------- #
 # wandb
